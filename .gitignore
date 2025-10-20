@@ -1,0 +1,23 @@
+# Ignore SQLite database
+backend/_db.sqlite3
+
+# Ignore .NET build folders
+backend/obj
+backend/bin
+
+# Node & build
+node_modules
+dist
+dist-ssr
+
+# Logs
+*.log
+logs
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+
