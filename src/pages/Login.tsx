@@ -6,14 +6,14 @@ import { useAuth } from '../hooks/useAuth'
 export default function Login() {
   const nav = useNavigate()
   const { login } = useAuth()
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     try {
-      await login(username, password)
+      await login(email, password)
       nav('/')
     } catch {
       setError('Fel användarnamn eller lösenord')
@@ -26,7 +26,7 @@ export default function Login() {
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group className="mb-3">
         <Form.Label>Användarnamn</Form.Label>
-        <Form.Control value={username} onChange={e => setUsername(e.target.value)} required />
+        <Form.Control value={email} onChange={e => setEmail(e.target.value)} required />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Lösenord</Form.Label>

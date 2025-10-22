@@ -12,8 +12,8 @@ export function useAuth() {
       .finally(() => setLoading(false))
   }, [])
 
-  async function login(username: string, password: string) {
-    const u = await apiPost('/login', { username, password })
+  async function login(email: string, password: string) {
+    const u = await apiPost('/login', { email, password })
     setUser(u)
   }
 

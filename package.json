@@ -1,0 +1,30 @@
+{
+  "name": "exemple-branching-dev",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/react-rapide dev",
+    "build": "vite build",
+    "preview": "node node_modules/react-rapide preview",
+    "start": "node node_modules/react-rapide dev",
+    "rr": "node node_modules/react-rapide",
+    "react-rapide": "node node_modules/react-rapide"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.6",
+    "react-dom": "^18.3.1",
+    "react-rapide": "^1.0.35",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "express-http-proxy": "^2.1.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8"
+  }
+}

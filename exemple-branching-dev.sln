@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exemple-branching-dev", "exemple-branching-dev", "{24B0936E-316F-E365-FC1D-BA62D77F60F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "exemple-branching-dev\backend\Backend.csproj", "{C923C629-1D27-162E-794C-9BD2FA43FDED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C923C629-1D27-162E-794C-9BD2FA43FDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C923C629-1D27-162E-794C-9BD2FA43FDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C923C629-1D27-162E-794C-9BD2FA43FDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C923C629-1D27-162E-794C-9BD2FA43FDED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C923C629-1D27-162E-794C-9BD2FA43FDED} = {24B0936E-316F-E365-FC1D-BA62D77F60F7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {552557C0-F2BC-4B64-9E0C-3416F7089CFE}
+	EndGlobalSection
+EndGlobal

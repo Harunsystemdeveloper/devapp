@@ -1,7 +1,8 @@
 import { usePosts } from '../hooks/usePosts'
 import { useAuth } from '../hooks/useAuth'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 export default function Home() {
   const { posts, loading, remove } = usePosts()
@@ -18,8 +19,9 @@ export default function Home() {
             <Card.Text>{p.content}</Card.Text>
             {user && (
               <>
+              {/* @ts-expect-error React Bootstrap typing bug */}
                 <Button as={Link} to={`/edit/${p.id}`} variant="secondary" size="sm">Redigera</Button>{' '}
-                <Button onClick={() => remove(p.id)} variant="danger" size="sm">Ta bort</Button>
+        
               </>
             )}
           </Card.Body>

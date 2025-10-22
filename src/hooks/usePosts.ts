@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react'
 import { apiGet, apiPost, apiPut, apiDelete } from '../api'
 
+export interface Post {
+  id?: number
+  title: string
+  content: string
+  createdAt?: string
+  updatedAt?: string
+}
+
 export function usePosts() {
-  const [posts, setPosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
 
   async function load() {
@@ -17,6 +25,7 @@ export function usePosts() {
     setPosts(prev => [post, ...prev])
   }
 
+
   async function edit(id: number, title: string, content: string) {
     const updated = await apiPut(`/posts/${id}`, { title, content })
     setPosts(prev => prev.map(p => (p.id === id ? updated : p)))
@@ -27,7 +36,10 @@ export function usePosts() {
     setPosts(prev => prev.filter(p => p.id !== id))
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => {
+    load()
+  }, [])
 
+ 
   return { posts, loading, add, edit, remove }
 }
