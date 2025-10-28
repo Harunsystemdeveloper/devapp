@@ -1,5 +1,4 @@
 namespace WebApp;
-
 public static class LoginRoutes
 {
     private static Obj GetUser(HttpContext context)
@@ -9,64 +8,64 @@ public static class LoginRoutes
 
     public static void Start()
     {
-     
         App.MapPost("/api/login", (HttpContext context, JsonElement bodyJson) =>
         {
-            var currentUser = GetUser(context);
+            var user = GetUser(context);
             var body = JSON.Parse(bodyJson.ToString());
 
-            if (currentUser != null)
+            // If there is a user logged in already
+            if (user != null)
             {
-                return RestResult.Parse(context, new { error = "En användare är redan inloggad." });
+                var already = new { error = "A user is already logged in." };
+                return RestResult.Parse(context, already);
             }
 
-          
-            var email = (string)body.email;
-
-        
+            // Find the user in the DB
             var dbUser = SQLQueryOne(
                 "SELECT * FROM users WHERE email = $email",
-                new { email }
+                new { body.email }
             );
-
             if (dbUser == null)
             {
-                return RestResult.Parse(context, new { error = "Ingen användare med den e-posten." });
+                return RestResult.Parse(context, new { error = "No such user." });
             }
 
-            var password = (string)body.password;
-            var storedHash = (string)dbUser.password;
-
-            
-            if (!Password.Verify(password, storedHash))
+            // If the password doesn't match
+            if (!Password.Verify(
+                (string)body.password,
+                (string)dbUser.password
+            ))
             {
-                return RestResult.Parse(context, new { error = "Fel lösenord." });
+                return RestResult.Parse(context,
+                    new { error = "Password mismatch." });
             }
 
+            // Add the user to the session, without password
             dbUser.Delete("password");
             Session.Set(context, "user", dbUser);
 
+            // Return the user
             return RestResult.Parse(context, dbUser!);
         });
 
-      
         App.MapGet("/api/login", (HttpContext context) =>
         {
             var user = GetUser(context);
-            return RestResult.Parse(context, user != null
-                ? user
-                : new { error = "Ingen användare är inloggad." });
+            return RestResult.Parse(context, user != null ?
+                user : new { error = "No user is logged in." });
         });
 
-       
         App.MapDelete("/api/login", (HttpContext context) =>
         {
             var user = GetUser(context);
+
+            // Delete the user from the session
             Session.Set(context, "user", null);
 
-            return RestResult.Parse(context, user == null
-                ? new { error = "Ingen användare är inloggad." }
-                : new { status = "Utloggad." });
+            return RestResult.Parse(context, user == null ?
+                new { error = "No user is logged in." } :
+                new { status = "Successful logout." }
+            );
         });
     }
 }

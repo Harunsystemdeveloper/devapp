@@ -19,7 +19,7 @@ export default function EditPost() {
     nav('/')
   }
 
-  if (!initial) return <p>Laddar...</p>
+  if (!initial) return <p></p>
   return (
     <>
       <h2>Redigera</h2>

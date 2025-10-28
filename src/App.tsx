@@ -2,6 +2,7 @@ import { Container, Navbar, Nav, Button } from 'react-bootstrap'
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import CreatePost from './pages/CreatePost'
 import EditPost from './pages/EditPost'
 import NotFoundPage from './pages/NotFoundPage'
@@ -33,6 +34,7 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/new" element={<CreatePost/>} />
             <Route path="/edit/:id" element={<EditPost />} />

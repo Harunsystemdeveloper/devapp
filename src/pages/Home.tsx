@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 export default function Home() {
-  const { posts, loading, remove } = usePosts()
+  const { posts } = usePosts()
   const { user } = useAuth()
 
-  if (loading) return <p>Laddar...</p>
 
   return (
     <div className="d-grid gap-3">
